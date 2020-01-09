@@ -10,4 +10,4 @@ chown abc:abc \
 	/downloads \
 	/incomplete-downloads
 #copy config
-cp -rv /mnt/storage1/config/* /config
+cp -rv /mnt/storage1/sabconfig/* /config
