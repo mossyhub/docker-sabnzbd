@@ -5,8 +5,11 @@ mkdir -p \
 	/downloads \
 	/incomplete-downloads
 
-# permissions
-chown abc:abc \
-	/downloads \
-	/incomplete-downloads
+#copy config
+cp -rv /mnt/storage1/sabconfig/* /config
 
+# permissions
+chown -R abc:abc \
+	/downloads \
+	/incomplete-downloads \
+	/config
