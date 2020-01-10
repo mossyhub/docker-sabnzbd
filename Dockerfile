@@ -18,7 +18,6 @@ RUN \
  apt-get install -y \
         gnupg && \
  echo "***** add sabnzbd repositories ****" && \
- curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
  apt-key adv --keyserver hkp://keyserver.ubuntu.com:11371 --recv-keys 0x98703123E0F52B2BE16D586EF13930B14BB9F05F && \
  echo "deb http://ppa.launchpad.net/jcfp/private/ubuntu bionic main" >> /etc/apt/sources.list.d/sabnzbd.list && \
  echo "deb-src http://ppa.launchpad.net/jcfp/private/ubuntu bionic main" >> /etc/apt/sources.list.d/sabnzbd.list && \
@@ -26,6 +25,12 @@ RUN \
  echo "deb-src http://ppa.launchpad.net/jcfp/sab-addons/ubuntu bionic main" >> /etc/apt/sources.list.d/sabnzbd.list && \
  echo "deb https://packages.microsoft.com/ubuntu/18.04/prod" >> /etc/apt/sources.list.d/sabnzbd.list && \
  echo "deb-src https://packages.microsoft.com/ubuntu/18.04/prod" >> /etc/apt/sources.list.d/sabnzbd.list && \
+ 
+ curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list && \
+ cp ./microsoft-prod.list /etc/apt/sources.list.d/ && \
+ curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
+ cp ./microsoft.gpg /etc/apt/trusted.gpg.d/ && \
+ 
  echo "**** install packages ****" && \
  if [ -z ${SABNZBD_VERSION+x} ]; then \
 	SABNZBD="sabnzbdplus"; \
