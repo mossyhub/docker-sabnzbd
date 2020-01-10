@@ -25,6 +25,8 @@ RUN \
  echo "deb-src http://ppa.launchpad.net/jcfp/private/ubuntu bionic main" >> /etc/apt/sources.list.d/sabnzbd.list && \
  echo "deb http://ppa.launchpad.net/jcfp/sab-addons/ubuntu bionic main" >> /etc/apt/sources.list.d/sabnzbd.list && \
  echo "deb-src http://ppa.launchpad.net/jcfp/sab-addons/ubuntu bionic main" >> /etc/apt/sources.list.d/sabnzbd.list && \
+ echo "deb https://packages.microsoft.com/ubuntu/18.04/prod" >> /etc/apt/sources.list.d/sabnzbd.list && \
+ echo "deb-src https://packages.microsoft.com/ubuntu/18.04/prod" >> /etc/apt/sources.list.d/sabnzbd.list && \
  echo "**** install packages ****" && \
  if [ -z ${SABNZBD_VERSION+x} ]; then \
 	SABNZBD="sabnzbdplus"; \
