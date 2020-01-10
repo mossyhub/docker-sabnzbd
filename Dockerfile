@@ -24,11 +24,6 @@ RUN \
  echo "deb http://ppa.launchpad.net/jcfp/sab-addons/ubuntu bionic main" >> /etc/apt/sources.list.d/sabnzbd.list && \
  echo "deb-src http://ppa.launchpad.net/jcfp/sab-addons/ubuntu bionic main" >> /etc/apt/sources.list.d/sabnzbd.list && \
  
- curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list && \
- cp ./microsoft-prod.list /etc/apt/sources.list.d/ && \
- curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
- cp ./microsoft.gpg /etc/apt/trusted.gpg.d/ && \
- 
  echo "**** install packages ****" && \
  if [ -z ${SABNZBD_VERSION+x} ]; then \
 	SABNZBD="sabnzbdplus"; \
@@ -39,7 +34,6 @@ RUN \
  apt-get update && \
  apt-get install -y \
 	p7zip-full \
-	blobfuse \
 	par2-tbb \
 	python3 \
 	python3-pip \
