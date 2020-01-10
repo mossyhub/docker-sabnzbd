@@ -3,6 +3,7 @@
 # make folders
 mkdir -p \
 	/downloads \
+	/mnt/sabblob1 \
 	/incomplete-downloads
 
 #copy config
@@ -12,4 +13,7 @@ cp -rv /mnt/storage1/sabconfig/* /config
 chown -R abc:abc \
 	/downloads \
 	/incomplete-downloads \
-	/config
+	/config \
+	/mnt/sabblob1
+#mount blob1
+blobfuse /mnt/sabblob1 --tmp-path=/mnt/storage1/BlobTemp1  --config-file=/etc/sabblob1_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
